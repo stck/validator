@@ -11,15 +11,20 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_CXX_STANDARD 17)
 
-SET(BECH_LIB
-        src/crypto/bech/bech32.hpp
-        src/crypto/bech/bech32m.hpp
-        src/crypto/bech/bech.hpp
-        src/crypto/bech/blech32.hpp
-        src/crypto/bech/blech32m.hpp
+SET(BASE_LIB
+    src/crypto/base/base.hpp
+        src/crypto/base/base64.hpp
 )
 
-SET(CRYPTO_LIB ${BECH_LIB})
+SET(BECH_LIB
+    src/crypto/bech/bech.hpp
+    src/crypto/bech/bech32.hpp
+    src/crypto/bech/bech32m.hpp
+    src/crypto/bech/blech32.hpp
+    src/crypto/bech/blech32m.hpp
+)
+
+SET(CRYPTO_LIB ${BASE_LIB} ${BECH_LIB})
 
 add_executable(validator src/main.cpp
         ${CRYPTO_LIB})

@@ -9,8 +9,8 @@ namespace bech::blech32m {
     inline constexpr int32_t MAX_SIZE = 150;
   }  // namespace
 
-  auto decrypt(const std::string& input) {
-    return bech::decrypt(input, ENCODING_CONST, MAX_SIZE, bech::polymod_blech);
+  auto decode(const std::string& input) {
+    return bech::decode(input, ENCODING_CONST, MAX_SIZE, bech::polymod_blech);
   }
 }  // namespace bech::blech32m
 

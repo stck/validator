@@ -58,11 +58,11 @@ namespace bech {
 
     inline constexpr auto polymod_blech(const checksum_t& i) -> checksum_t {
       return (((i & 0x7FFFFFFFFFFFFF) << 5) ^
-                (-((i >> 55) & 1) & 0x7d52fba40bd886) ^
-                (-((i >> 56) & 1) & 0x5e8dbf1a03950c) ^
-                (-((i >> 57) & 1) & 0x1c3a3c74072a18) ^
-                (-((i >> 58) & 1) & 0x385d72fa0e5139) ^
-                (-((i >> 59) & 1) & 0x7093e5a608865b));
+              (-((i >> 55) & 1) & 0x7d52fba40bd886) ^
+              (-((i >> 56) & 1) & 0x5e8dbf1a03950c) ^
+              (-((i >> 57) & 1) & 0x1c3a3c74072a18) ^
+              (-((i >> 58) & 1) & 0x385d72fa0e5139) ^
+              (-((i >> 59) & 1) & 0x7093e5a608865b));
     }
 
     inline constexpr auto prefix_checksum(const std::string& prefix, const std::function<checksum_t(checksum_t)>& polymod = polymod_bech) -> checksum_t {
@@ -83,7 +83,11 @@ namespace bech {
     }
   }  // namespace
 
-  auto decrypt(const std::string& input, const int64_t& enc_constant = 1, const size_t& max = MAX_SIZE, const std::function<checksum_t(checksum_t)>& polymod = polymod_bech) -> std::pair<std::string, bool> {
+  auto decode(
+      const std::string& input,
+      const int64_t& enc_constant = 1,
+      const size_t& max = MAX_SIZE,
+      const std::function<checksum_t(checksum_t)>& polymod = polymod_bech) -> std::pair<std::string, bool> {
     if (input.size() < 8 || input.size() > max) {
       throw InvalidSizeException(input.size(), max);
     }

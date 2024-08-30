@@ -55,7 +55,7 @@ namespace bech {
       for(const auto& test : suite) {
         bool is_err = false;
         try{
-          bech::decrypt(test, 1, 10);
+          bech::decode(test, 1, 10);
         } catch (std::runtime_error& err) {
           is_err = true;
 
@@ -75,7 +75,7 @@ namespace bech {
       for(const auto& test : suite) {
         bool is_err = false;
         try{
-          bech::decrypt(test);
+          bech::decode(test);
         } catch (std::runtime_error& err) {
           is_err = true;
 
@@ -95,7 +95,7 @@ namespace bech {
       for(const auto& test : suite) {
         bool is_err = false;
         try{
-          bech::decrypt(test);
+          bech::decode(test);
         } catch (std::runtime_error& err) {
           is_err = true;
 
@@ -149,7 +149,7 @@ namespace bech {
         };
 
         for (const auto& test : suite) {
-          auto [prefix, valid] = bech::bech32::decrypt(test);
+          auto [prefix, valid] = bech::bech32::decode(test);
 
           assert(prefix == "bc");
           assert(valid == true);
@@ -168,7 +168,7 @@ namespace bech {
         };
 
         for (const auto& test : suite) {
-          auto [prefix, valid] = bech::bech32m::decrypt(test);
+          auto [prefix, valid] = bech::bech32m::decode(test);
 
           assert(prefix == "bc");
           assert(valid == true);
@@ -183,7 +183,7 @@ namespace bech {
       };
 
       for (const auto& test : suite) {
-        auto [prefix, valid] = bech::blech32::decrypt(test);
+        auto [prefix, valid] = bech::blech32::decode(test);
 
         assert(prefix == "el");
         assert(valid == true);
@@ -198,7 +198,7 @@ namespace bech {
       };
 
       for (const auto& test : suite) {
-        auto [prefix, valid] = bech::blech32m::decrypt(test);
+        auto [prefix, valid] = bech::blech32m::decode(test);
 
         assert(prefix == "el");
         assert(valid == true);

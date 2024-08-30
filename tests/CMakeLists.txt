@@ -1,5 +1,6 @@
 set(SOURCES
-        crypto/bech.spec.cpp
+    crypto/bech.spec.cpp
+    crypto/base.spec.cpp
 )
 
 foreach (_test ${SOURCES})

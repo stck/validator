@@ -8,8 +8,8 @@ namespace bech::bech32m {
     inline constexpr int64_t ENCODING_CONST = 0x2bc830a3;
   }  // namespace
 
-  auto decrypt(const std::string& input) {
-    return bech::decrypt(input, ENCODING_CONST);
+  auto decode(const std::string& input) {
+    return bech::decode(input, ENCODING_CONST);
   }
 }
 
